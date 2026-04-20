@@ -1,0 +1,1070 @@
+{
+  "entities": {
+    "ApplicationSetting": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "ApplicationSetting",
+      "type": "object",
+      "description": "Stores global configuration settings for the application, typically a single record per user.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the ApplicationSetting entity. (e.g., 'business_profile')"
+        },
+        "businessName": {
+          "type": "string",
+          "description": "The legal name of the business using the application."
+        },
+        "businessAddress": {
+          "type": "string",
+          "description": "The physical address of the business."
+        },
+        "businessTaxId": {
+          "type": "string",
+          "description": "The tax identification number (e.g., RUC in Peru) of the business."
+        },
+        "defaultCurrencyCode": {
+          "type": "string",
+          "description": "The ISO 4217 code for the default currency (e.g., 'PEN' for Sol peruano)."
+        },
+        "currencySymbol": {
+          "type": "string",
+          "description": "The symbol for the default currency (e.g., 'S/')."
+        },
+        "logoUrl": {
+          "type": "string",
+          "description": "URL to the business logo, used for receipts and branding.",
+          "format": "uri"
+        },
+        "updatedAt": {
+          "type": "string",
+          "description": "Timestamp when the application settings were last updated.",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "id"
+      ]
+    },
+    "ProductCategory": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "ProductCategory",
+      "type": "object",
+      "description": "Categorizes products for better organization and reporting.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the ProductCategory entity."
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the product category (e.g., 'Bebidas', 'Lácteos')."
+        },
+        "description": {
+          "type": "string",
+          "description": "A brief description of the product category."
+        }
+      },
+      "required": [
+        "id",
+        "name"
+      ]
+    },
+    "Product": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "Product",
+      "type": "object",
+      "description": "Details about a specific product available for sale or purchase.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the Product entity."
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the product."
+        },
+        "description": {
+          "type": "string",
+          "description": "A detailed description of the product."
+        },
+        "price": {
+          "type": "number",
+          "description": "The selling price of the product per unit or kilogram."
+        },
+        "stock": {
+          "type": "number",
+          "description": "The current quantity of the product in stock. Only relevant if trackStock is true."
+        },
+        "minStock": {
+          "type": "number",
+          "description": "The minimum stock level before a product is considered to be low in stock."
+        },
+        "trackStock": {
+          "type": "boolean",
+          "description": "If true, stock levels are tracked for this product."
+        },
+        "unitOfMeasure": {
+          "type": "string",
+          "description": "The unit of measure for the product (e.g., 'unit', 'kg', 'liter')."
+        },
+        "imageUrl": {
+          "type": "string",
+          "description": "URL to an image of the product.",
+          "format": "uri"
+        },
+        "color": {
+          "type": "string",
+          "description": "A hex color code associated with the product for UI identification."
+        },
+        "barcode": {
+          "type": "string",
+          "description": "The barcode or SKU of the product for quick identification."
+        },
+        "isActive": {
+          "type": "boolean",
+          "description": "Indicates if the product is currently active and available for sale."
+        },
+        "categoryId": {
+          "type": "string",
+          "description": "Reference to ProductCategory. (Relationship: ProductCategory 1:N Product)"
+        },
+        "supplierId": {
+          "type": "string",
+          "description": "Reference to the Supplier this product is associated with."
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "Timestamp when the product record was created.",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "description": "Timestamp when the product record was last updated.",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "price",
+        "unitOfMeasure",
+        "isActive",
+        "categoryId"
+      ]
+    },
+    "Customer": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "Customer",
+      "type": "object",
+      "description": "Holds information about a client who purchases products or services.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the Customer entity."
+        },
+        "firstName": {
+          "type": "string",
+          "description": "The first name of the customer."
+        },
+        "lastName": {
+          "type": "string",
+          "description": "The last name of the customer."
+        },
+        "companyName": {
+          "type": "string",
+          "description": "The company name if the customer represents a business."
+        },
+        "email": {
+          "type": "string",
+          "description": "The email address of the customer.",
+          "format": "email"
+        },
+        "phone": {
+          "type": "string",
+          "description": "The phone number of the customer."
+        },
+        "address": {
+          "type": "string",
+          "description": "The physical address of the customer."
+        },
+        "identificationNumber": {
+          "type": "string",
+          "description": "The national identification number (e.g., DNI, RUC) of the customer."
+        },
+        "notes": {
+          "type": "string",
+          "description": "Any additional notes or comments about the customer."
+        },
+        "allowCredit": {
+          "type": "boolean",
+          "description": "Specifies if the customer is allowed to make purchases on credit."
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "Timestamp when the customer record was created.",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "description": "Timestamp when the customer record was last updated.",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "id",
+        "firstName",
+        "lastName"
+      ]
+    },
+    "Sale": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "Sale",
+      "type": "object",
+      "description": "Represents a single sales transaction or order made by a customer.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the Sale entity."
+        },
+        "saleNumber": {
+          "type": "string",
+          "description": "A unique, human-readable sales or invoice number for the transaction."
+        },
+        "saleDate": {
+          "type": "string",
+          "description": "The date and time when the sale occurred.",
+          "format": "date-time"
+        },
+        "customerId": {
+          "type": "string",
+          "description": "Reference to Customer who made the purchase. (Relationship: Customer 1:N Sale)"
+        },
+        "totalAmount": {
+          "type": "number",
+          "description": "The grand total amount of the sale, including discounts and taxes."
+        },
+        "paymentMethod": {
+          "type": "string",
+          "description": "The method of payment for the sale."
+        },
+        "discountAmount": {
+          "type": "number",
+          "description": "The total discount applied to the sale."
+        },
+        "taxAmount": {
+          "type": "number",
+          "description": "The total tax amount applied to the sale."
+        },
+        "status": {
+          "type": "string",
+          "description": "The current status of the sale (e.g., 'Pending', 'Completed', 'Cancelled', 'Partially Paid')."
+        },
+        "currencyCode": {
+          "type": "string",
+          "description": "The ISO 4217 currency code for the sale (e.g., 'PEN', 'USD')."
+        },
+        "notes": {
+          "type": "string",
+          "description": "Any additional notes related to the sale."
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "Timestamp when the sale record was created.",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "description": "Timestamp when the sale record was last updated.",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "id",
+        "saleNumber",
+        "saleDate",
+        "customerId",
+        "totalAmount",
+        "status",
+        "currencyCode"
+      ]
+    },
+    "SaleItem": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "SaleItem",
+      "type": "object",
+      "description": "Represents a single product line item within a sale.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the SaleItem entity."
+        },
+        "saleId": {
+          "type": "string",
+          "description": "Reference to the Sale this item belongs to. (Relationship: Sale 1:N SaleItem)"
+        },
+        "productId": {
+          "type": "string",
+          "description": "Reference to the Product being sold. (Relationship: Product 1:N SaleItem)"
+        },
+        "productName": {
+          "type": "string",
+          "description": "Denormalized name of the product for display purposes."
+        },
+        "quantity": {
+          "type": "number",
+          "description": "The quantity of the product sold (can be units, kilograms, etc. based on product's unitOfMeasure)."
+        },
+        "unitPrice": {
+          "type": "number",
+          "description": "The price of the product per unit or kilogram at the time of sale."
+        },
+        "subtotal": {
+          "type": "number",
+          "description": "The calculated subtotal for this line item (quantity * unitPrice)."
+        },
+        "unitOfMeasure": {
+          "type": "string",
+          "description": "The unit of measure for the product (e.g., 'unit', 'kg')."
+        },
+        "notes": {
+          "type": "string",
+          "description": "Any specific notes for this sale item."
+        }
+      },
+      "required": [
+        "id",
+        "saleId",
+        "productId",
+        "productName",
+        "quantity",
+        "unitPrice",
+        "subtotal",
+        "unitOfMeasure"
+      ]
+    },
+    "Payment": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "Payment",
+      "type": "object",
+      "description": "Records a payment made by a customer against a specific sale.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the Payment entity."
+        },
+        "saleId": {
+          "type": "string",
+          "description": "Reference to the Sale this payment is associated with. (Relationship: Sale 1:N Payment)"
+        },
+        "paymentDate": {
+          "type": "string",
+          "description": "The date and time when the payment was made.",
+          "format": "date-time"
+        },
+        "amount": {
+          "type": "number",
+          "description": "The amount of the payment received."
+        },
+        "paymentMethod": {
+          "type": "string",
+          "description": "The method used for the payment (e.g., 'Cash', 'Credit Card', 'Bank Transfer')."
+        },
+        "transactionReference": {
+          "type": "string",
+          "description": "A reference number or ID from the payment processor or bank, if applicable."
+        },
+        "notes": {
+          "type": "string",
+          "description": "Any additional notes regarding the payment."
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "Timestamp when the payment record was created.",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "description": "Timestamp when the payment record was last updated.",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "id",
+        "saleId",
+        "paymentDate",
+        "amount",
+        "paymentMethod"
+      ]
+    },
+    "TransactionDocument": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "TransactionDocument",
+      "type": "object",
+      "description": "Stores metadata about generated transaction documents like receipts, invoices, or purchase orders.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the TransactionDocument entity."
+        },
+        "documentType": {
+          "type": "string",
+          "description": "The type of document (e.g., 'SaleReceipt', 'PaymentConfirmation', 'PurchaseOrder', 'Invoice')."
+        },
+        "documentNumber": {
+          "type": "string",
+          "description": "A unique number or identifier for the document."
+        },
+        "issueDate": {
+          "type": "string",
+          "description": "The date and time when the document was issued or generated.",
+          "format": "date-time"
+        },
+        "saleId": {
+          "type": "string",
+          "description": "Reference to the Sale entity if this document is related to a sale. (Relationship: Sale 1:N TransactionDocument)"
+        },
+        "paymentId": {
+          "type": "string",
+          "description": "Reference to the Payment entity if this document is related to a payment. (Relationship: Payment 1:N TransactionDocument)"
+        },
+        "filePath": {
+          "type": "string",
+          "description": "The URL or path to the stored document file (e.g., PNG file).",
+          "format": "uri"
+        },
+        "description": {
+          "type": "string",
+          "description": "A brief description of the document's content or purpose."
+        },
+        "status": {
+          "type": "string",
+          "description": "The current status of the document (e.g., 'Generated', 'Sent', 'Printed', 'Archived')."
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "Timestamp when the document record was created.",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "description": "Timestamp when the document record was last updated.",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "id",
+        "documentType",
+        "documentNumber",
+        "issueDate",
+        "filePath",
+        "description"
+      ]
+    },
+    "CustomerPayment": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "CustomerPayment",
+      "type": "object",
+      "description": "Records a payment received from a customer, independent of any specific sale, to pay down their balance.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the CustomerPayment entity."
+        },
+        "customerId": {
+          "type": "string",
+          "description": "Reference to the Customer this payment is from."
+        },
+        "paymentDate": {
+          "type": "string",
+          "description": "The date of the payment.",
+          "format": "date-time"
+        },
+        "amount": {
+          "type": "number",
+          "description": "The amount received."
+        },
+        "paymentMethod": {
+          "type": "string",
+          "description": "The method of payment (e.g., 'Cash', 'Bank Transfer')."
+        },
+        "notes": {
+          "type": "string",
+          "description": "Optional notes about the payment."
+        }
+      },
+      "required": [
+        "id",
+        "customerId",
+        "paymentDate",
+        "amount",
+        "paymentMethod"
+      ]
+    },
+    "Supplier": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "Supplier",
+      "type": "object",
+      "description": "Represents a supplier or vendor from whom products are purchased.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the Supplier entity."
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the supplier."
+        },
+        "contactPerson": {
+          "type": "string",
+          "description": "The name of the primary contact person at the supplier."
+        },
+        "email": {
+          "type": "string",
+          "format": "email",
+          "description": "The email address of the supplier."
+        },
+        "phone": {
+          "type": "string",
+          "description": "The phone number of the supplier."
+        },
+        "address": {
+          "type": "string",
+          "description": "The physical address of the supplier."
+        },
+        "identificationNumber": {
+          "type": "string",
+          "description": "The tax or business identification number (e.g., RUC) of the supplier."
+        },
+        "notes": {
+          "type": "string",
+          "description": "Any additional notes about the supplier."
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Timestamp when the supplier record was created."
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Timestamp when the supplier record was last updated."
+        }
+      },
+      "required": [
+        "id",
+        "name"
+      ]
+    },
+    "Purchase": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "Purchase",
+      "type": "object",
+      "description": "Represents a single purchase transaction from a supplier.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the Purchase entity."
+        },
+        "purchaseNumber": {
+          "type": "string",
+          "description": "A unique, human-readable number for the purchase transaction."
+        },
+        "purchaseDate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The date and time when the purchase was made."
+        },
+        "supplierId": {
+          "type": "string",
+          "description": "Reference to the Supplier from whom the purchase was made."
+        },
+        "totalAmount": {
+          "type": "number",
+          "description": "The grand total amount of the purchase."
+        },
+        "currencyCode": {
+          "type": "string",
+          "description": "The ISO 4217 currency code for the purchase."
+        },
+        "status": {
+          "type": "string",
+          "description": "The status of the purchase (e.g., 'Received', 'Pending', 'Cancelled')."
+        },
+        "notes": {
+          "type": "string",
+          "description": "Any additional notes related to the purchase."
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Timestamp when the purchase record was created."
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Timestamp when the purchase record was last updated."
+        }
+      },
+      "required": [
+        "id",
+        "purchaseNumber",
+        "purchaseDate",
+        "supplierId",
+        "totalAmount",
+        "currencyCode",
+        "status"
+      ]
+    },
+    "PurchaseItem": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "PurchaseItem",
+      "type": "object",
+      "description": "Represents a single product line item within a purchase.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the PurchaseItem entity."
+        },
+        "purchaseId": {
+          "type": "string",
+          "description": "Reference to the Purchase this item belongs to."
+        },
+        "productId": {
+          "type": "string",
+          "description": "Reference to the Product being purchased."
+        },
+        "productName": {
+          "type": "string",
+          "description": "Denormalized name of the product."
+        },
+        "quantity": {
+          "type": "number",
+          "description": "The quantity of the product purchased."
+        },
+        "unitCost": {
+          "type": "number",
+          "description": "The cost of the product per unit or kilogram."
+        },
+        "subtotal": {
+          "type": "number",
+          "description": "The calculated subtotal for this line item (quantity * unitCost)."
+        },
+        "unitOfMeasure": {
+          "type": "string",
+          "description": "The unit of measure for the product."
+        }
+      },
+      "required": [
+        "id",
+        "purchaseId",
+        "productId",
+        "productName",
+        "quantity",
+        "unitCost",
+        "subtotal",
+        "unitOfMeasure"
+      ]
+    },
+    "SupplierPayment": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "SupplierPayment",
+      "type": "object",
+      "description": "Records a payment made to a supplier.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the SupplierPayment entity."
+        },
+        "supplierId": {
+          "type": "string",
+          "description": "Reference to the Supplier this payment is for."
+        },
+        "paymentDate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The date of the payment."
+        },
+        "amount": {
+          "type": "number",
+          "description": "The amount paid."
+        },
+        "paymentMethod": {
+          "type": "string",
+          "description": "The method of payment."
+        },
+        "notes": {
+          "type": "string",
+          "description": "Optional notes about the payment."
+        }
+      },
+      "required": [
+        "id",
+        "supplierId",
+        "paymentDate",
+        "amount",
+        "paymentMethod"
+      ]
+    },
+    "ApprovedUser": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "ApprovedUser",
+      "type": "object",
+      "description": "Represents a user who has been granted access to the application by an administrator. The document ID is the user's UID.",
+      "properties": {
+        "approvedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Timestamp when the user was approved."
+        }
+      }
+    },
+    "UserKey": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "UserKey",
+      "type": "object",
+      "description": "Stores a unique license key generated for a user upon registration.",
+      "properties": {
+        "key": {
+          "type": "string",
+          "description": "The unique license key for the user (e.g., 'EVA-XXXX-XXXXXXXX')."
+        },
+        "email": {
+          "type": "string",
+          "format": "email",
+          "description": "The email of the user this key belongs to."
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Timestamp when the key was generated."
+        }
+      },
+      "required": [
+        "key",
+        "email",
+        "createdAt"
+      ]
+    }
+  },
+  "auth": {
+    "providers": [
+      "password",
+      "google.com"
+    ]
+  },
+  "firestore": {
+    "structure": [
+      {
+        "path": "/users/{userId}/settings/{settingId}",
+        "definition": {
+          "entityName": "ApplicationSetting",
+          "schema": {
+            "$ref": "#/backend/entities/ApplicationSetting"
+          },
+          "description": "User-specific application settings, like business name and logo. The settingId is a fixed value like 'business_profile'.",
+          "params": [
+            {
+              "name": "userId",
+              "description": "The unique Firebase Authentication User ID of the business owner."
+            },
+            {
+              "name": "settingId",
+              "description": "The unique identifier for the setting document, e.g., 'business_profile'."
+            }
+          ]
+        }
+      },
+      {
+        "path": "/approved_users/{userId}",
+        "definition": {
+          "entityName": "ApprovedUser",
+          "schema": {
+            "$ref": "#/backend/entities/ApprovedUser"
+          },
+          "description": "A collection that stores the UIDs of users who are approved to use the application. Only an admin can write to this collection.",
+          "params": [
+            {
+              "name": "userId",
+              "description": "The unique Firebase Authentication User ID of the approved user."
+            }
+          ]
+        }
+      },
+      {
+        "path": "/users/{userId}/keys/{keyId}",
+        "definition": {
+          "entityName": "UserKey",
+          "schema": {
+            "$ref": "#/backend/entities/UserKey"
+          },
+          "description": "Stores the unique license key for a user. The keyId is a fixed value like 'user_license'.",
+          "params": [
+            {
+              "name": "userId",
+              "description": "The unique Firebase Authentication User ID."
+            },
+            {
+              "name": "keyId",
+              "description": "The unique identifier for the key document, e.g., 'user_license'."
+            }
+          ]
+        }
+      },
+      {
+        "path": "/users/{userId}/product_categories/{productCategoryId}",
+        "definition": {
+          "entityName": "ProductCategory",
+          "schema": {
+            "$ref": "#/backend/entities/ProductCategory"
+          },
+          "description": "Product categories specific to a user's business. Authorization is based on the 'userId' in the path, ensuring only the owner can access their categories.",
+          "params": [
+            {
+              "name": "userId",
+              "description": "The unique Firebase Authentication User ID of the business owner."
+            },
+            {
+              "name": "productCategoryId",
+              "description": "The unique identifier for the product category."
+            }
+          ]
+        }
+      },
+      {
+        "path": "/users/{userId}/products/{productId}",
+        "definition": {
+          "entityName": "Product",
+          "schema": {
+            "$ref": "#/backend/entities/Product"
+          },
+          "description": "Products available for a user's business. Authorization is based on the 'userId' in the path.",
+          "params": [
+            {
+              "name": "userId",
+              "description": "The unique Firebase Authentication User ID of the business owner."
+            },
+            {
+              "name": "productId",
+              "description": "The unique identifier for the product."
+            }
+          ]
+        }
+      },
+      {
+        "path": "/users/{userId}/customers/{customerId}",
+        "definition": {
+          "entityName": "Customer",
+          "schema": {
+            "$ref": "#/backend/entities/Customer"
+          },
+          "description": "Customers of a user's business. Authorization is based on the 'userId' in the path.",
+          "params": [
+            {
+              "name": "userId",
+              "description": "The unique Firebase Authentication User ID of the business owner."
+            },
+            {
+              "name": "customerId",
+              "description": "The unique identifier for the customer."
+            }
+          ]
+        }
+      },
+      {
+        "path": "/users/{userId}/sales/{saleId}",
+        "definition": {
+          "entityName": "Sale",
+          "schema": {
+            "$ref": "#/backend/entities/Sale"
+          },
+          "description": "Sales transactions for a user's business. Authorization is based on the 'userId' in the path.",
+          "params": [
+            {
+              "name": "userId",
+              "description": "The unique Firebase Authentication User ID of the business owner."
+            },
+            {
+              "name": "saleId",
+              "description": "The unique identifier for the sale transaction."
+            }
+          ]
+        }
+      },
+      {
+        "path": "/users/{userId}/sales/{saleId}/sale_items/{saleItemId}",
+        "definition": {
+          "entityName": "SaleItem",
+          "schema": {
+            "$ref": "#/backend/entities/SaleItem"
+          },
+          "description": "Line items belonging to a specific sale. Authorization is inherited from the parent 'saleId' and 'userId' in the path, ensuring atomic rule evaluation.",
+          "params": [
+            {
+              "name": "userId",
+              "description": "The unique Firebase Authentication User ID of the business owner."
+            },
+            {
+              "name": "saleId",
+              "description": "The unique identifier for the parent sale transaction."
+            },
+            {
+              "name": "saleItemId",
+              "description": "The unique identifier for the sale item."
+            }
+          ]
+        }
+      },
+      {
+        "path": "/users/{userId}/sales/{saleId}/payments/{paymentId}",
+        "definition": {
+          "entityName": "Payment",
+          "schema": {
+            "$ref": "#/backend/entities/Payment"
+          },
+          "description": "Payments made towards a specific sale. Authorization is inherited from the parent 'saleId' and 'userId' in the path.",
+          "params": [
+            {
+              "name": "userId",
+              "description": "The unique Firebase Authentication User ID of the business owner."
+            },
+            {
+              "name": "saleId",
+              "description": "The unique identifier for the parent sale transaction."
+            },
+            {
+              "name": "paymentId",
+              "description": "The unique identifier for the payment."
+            }
+          ]
+        }
+      },
+      {
+        "path": "/users/{userId}/transaction_documents/{documentId}",
+        "definition": {
+          "entityName": "TransactionDocument",
+          "schema": {
+            "$ref": "#/backend/entities/TransactionDocument"
+          },
+          "description": "Generated transaction documents (receipts, invoices) for a user's business. Includes denormalized 'ownerId' (matching 'userId' from the path) for explicit authorization independence and flexible referencing to sales, payments, or purchases.",
+          "params": [
+            {
+              "name": "userId",
+              "description": "The unique Firebase Authentication User ID of the business owner."
+            },
+            {
+              "name": "documentId",
+              "description": "The unique identifier for the transaction document."
+            }
+          ]
+        }
+      },
+      {
+        "path": "/users/{userId}/customer_payments/{paymentId}",
+        "definition": {
+          "entityName": "CustomerPayment",
+          "schema": {
+            "$ref": "#/backend/entities/CustomerPayment"
+          },
+          "description": "Payments received from a customer to pay down their total balance. Authorization is based on the 'userId' in the path.",
+          "params": [
+            {
+              "name": "userId",
+              "description": "The unique Firebase Authentication User ID of the business owner."
+            },
+            {
+              "name": "paymentId",
+              "description": "The unique identifier for the customer payment."
+            }
+          ]
+        }
+      },
+      {
+        "path": "/users/{userId}/suppliers/{supplierId}",
+        "definition": {
+          "entityName": "Supplier",
+          "schema": {
+            "$ref": "#/backend/entities/Supplier"
+          },
+          "description": "Suppliers for a user's business. Authorization is based on the 'userId' in the path.",
+          "params": [
+            {
+              "name": "userId",
+              "description": "The unique Firebase Authentication User ID of the business owner."
+            },
+            {
+              "name": "supplierId",
+              "description": "The unique identifier for the supplier."
+            }
+          ]
+        }
+      },
+      {
+        "path": "/users/{userId}/purchases/{purchaseId}",
+        "definition": {
+          "entityName": "Purchase",
+          "schema": {
+            "$ref": "#/backend/entities/Purchase"
+          },
+          "description": "Purchase transactions for a user's business. Authorization is based on the 'userId' in the path.",
+          "params": [
+            {
+              "name": "userId",
+              "description": "The unique Firebase Authentication User ID of the business owner."
+            },
+            {
+              "name": "purchaseId",
+              "description": "The unique identifier for the purchase transaction."
+            }
+          ]
+        }
+      },
+      {
+        "path": "/users/{userId}/purchases/{purchaseId}/purchase_items/{purchaseItemId}",
+        "definition": {
+          "entityName": "PurchaseItem",
+          "schema": {
+            "$ref": "#/backend/entities/PurchaseItem"
+          },
+          "description": "Line items belonging to a specific purchase.",
+          "params": [
+            {
+              "name": "userId",
+              "description": "The unique Firebase Authentication User ID."
+            },
+            {
+              "name": "purchaseId",
+              "description": "The unique identifier for the parent purchase transaction."
+            },
+            {
+              "name": "purchaseItemId",
+              "description": "The unique identifier for the purchase item."
+            }
+          ]
+        }
+      },
+      {
+        "path": "/users/{userId}/supplier_payments/{paymentId}",
+        "definition": {
+          "entityName": "SupplierPayment",
+          "schema": {
+            "$ref": "#/backend/entities/SupplierPayment"
+          },
+          "description": "Payments made to a supplier. Authorization is based on the 'userId' in the path.",
+          "params": [
+            {
+              "name": "userId",
+              "description": "The unique Firebase Authentication User ID."
+            },
+            {
+              "name": "paymentId",
+              "description": "The unique identifier for the supplier payment."
+            }
+          ]
+        }
+      }
+    ],
+    "reasoning": "The recommended Firestore structure is designed to be highly secure, scalable, and multi-tenant. The core strategy involves segregating all business-specific data under a dedicated user-ID path (`/users/{userId}/...`). This ensures that each user's business data (products, sales, customers, settings) is isolated, making security rules straightforward and highly efficient. Authorization for these collections relies on `request.auth.uid == userId`. For true multi-tenancy, business-specific settings (like name and logo) are stored in `/users/{userId}/settings/{settingId}`, where `{settingId}` is a fixed document ID like `business_profile`."
+  }
+}
+
+    

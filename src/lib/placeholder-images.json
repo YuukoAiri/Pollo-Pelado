@@ -1,0 +1,76 @@
+{
+  "placeholderImages": [
+    {
+      "id": "apple",
+      "description": "Fresh red apples",
+      "imageUrl": "https://picsum.photos/seed/apple/400/400",
+      "imageHint": "red apple"
+    },
+    {
+      "id": "milk",
+      "description": "Carton of milk",
+      "imageUrl": "https://picsum.photos/seed/milk/400/400",
+      "imageHint": "milk carton"
+    },
+    {
+      "id": "rice",
+      "description": "Bag of white rice",
+      "imageUrl": "https://picsum.photos/seed/rice/400/400",
+      "imageHint": "rice bag"
+    },
+    {
+      "id": "chicken",
+      "description": "Raw whole chicken",
+      "imageUrl": "https://picsum.photos/seed/chicken/400/400",
+      "imageHint": "raw chicken"
+    },
+    {
+      "id": "soda",
+      "description": "Bottle of soda",
+      "imageUrl": "https://picsum.photos/seed/soda/400/400",
+      "imageHint": "soda bottle"
+    },
+    {
+      "id": "potato",
+      "description": "Yellow potatoes",
+      "imageUrl": "https://picsum.photos/seed/potato/400/400",
+      "imageHint": "yellow potato"
+    },
+    {
+      "id": "oil",
+      "description": "Bottle of cooking oil",
+      "imageUrl": "https://picsum.photos/seed/oil/400/400",
+      "imageHint": "cooking oil"
+    },
+    {
+      "id": "woman1",
+      "description": "Portrait of a woman",
+      "imageUrl": "https://picsum.photos/seed/woman1/100/100",
+      "imageHint": "woman portrait"
+    },
+    {
+      "id": "man1",
+      "description": "Portrait of a man",
+      "imageUrl": "https://picsum.photos/seed/man1/100/100",
+      "imageHint": "man portrait"
+    },
+    {
+      "id": "woman2",
+      "description": "Portrait of another woman",
+      "imageUrl": "https://picsum.photos/seed/woman2/100/100",
+      "imageHint": "woman smiling"
+    },
+    {
+      "id": "man2",
+      "description": "Portrait of another man",
+      "imageUrl": "https://picsum.photos/seed/man2/100/100",
+      "imageHint": "man smiling"
+    },
+    {
+      "id": "woman3",
+      "description": "Portrait of a third woman",
+      "imageUrl": "https://picsum.photos/seed/woman3/100/100",
+      "imageHint": "person thinking"
+    }
+  ]
+}
